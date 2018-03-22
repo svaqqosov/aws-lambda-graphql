@@ -1,0 +1,28 @@
+{
+    "extends": "airbnb-base",
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "never",
+                "objects": "never",
+                "imports": "never",
+                "exports": "never",
+                "functions": "ignore"
+            }
+        ],
+        "prefer-destructuring": [
+            "error",
+            {
+                "array": true,
+                "object": false
+            },
+            {
+                "enforceForRenamedProperties": false
+            }
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+service: aws-lambda-graphql
+
+# Enable auto-packing of external modules
+custom:
+  webpackIncludeModules: true
+
+provider:
+  name: aws
+  runtime: nodejs6.10   # set node.js runtime
+  memorySize: 128   # set the maximum memory of the Lambdas in Megabytes
+  timeout: 10   # the timeout is 10 seconds (default is 6 seconds)
+  region: ap-northeast-2
+
+functions:
+  app:
+    handler: lambda.handler
+    environment:
+      NODE_ENV: ${env:NODE_ENV}
+      DB: ${env:DB}
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+
+
+plugins:
+  - serverless-offline

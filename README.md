@@ -27,22 +27,43 @@ For dev environment you can use express...
 ```sh
 $ node run server.js
 ```
-Open http://127.0.0.1:1337 in your brouser.
-
+Open http://127.0.0.1:1337 in your brouser and enter the following:
+```sh
+{
+  posts{
+    id
+    title
+    url
+    ups
+    author
+  }
+}
+```
 
 In order to run lambda locally run:
 
 ```sh
 $ sls offline start --skipCacheInvalidation
 ```
-Open http://127.0.0.1:3000 in your brouser.
-
+Open http://127.0.0.1:3000 in your brouser and enter the following:
+```sh
+{
+  posts(subreddit:"php") {
+    id
+    title
+    url
+    ups
+    author
+  }
+}
+```
 
 
 
 For deployment to AWS you need to have AWS account [`credentials installed`](https://serverless.com/framework/docs/providers/aws/guide/credentials).
+
 If you already have AWS account credentials configured run this to deploy:
+
 ```sh
 $ serverless deploy -f app --aws-profile dev --stage dev
 ```
-
